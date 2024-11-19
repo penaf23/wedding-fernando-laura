@@ -28,32 +28,33 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
     <!-- Navbar Start -->
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand d-block d-lg-none">
-            <h1 class="font-secondary text-white mb-n2">Laura <span class="text-primary">&</span> Fernando</h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav ml-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
-                <a href="#story" class="nav-item nav-link">Story</a>
-                <a href="#gallery" class="nav-item nav-link">Gallery</a>
-            </div>
-            <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
-                <h1 class="font-secondary text-white mb-n2">Laura<span class="text-primary">&</span>Fernando</h1>
-            </a>
-            <div class="navbar-nav mr-auto py-0">
-                <a href="#family" class="nav-item nav-link">Family</a>
-                <a href="#event" class="nav-item nav-link">Event</a>
-                <a href="#rsvp" class="nav-item nav-link">RSVP</a>
-                <a href="#contact" class="nav-item nav-link">Contact</a>
-            </div>
+
+<nav class="navbar fixed-top shadow-sm navbar-expand-lg navbar-dark py-3 py-lg-0 px-lg-5 gradient-navbar">
+    <a href="index.html" class="navbar-brand d-block d-lg-none">
+        <h1 class="font-secondary text-white mb-n2">Laura <span class="text-primary">&</span> Fernando</h1>
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav ml-auto py-0">
+            <a href="#home" class="nav-item nav-link active">Home</a>
+            <a href="#about" class="nav-item nav-link">About</a>
+            <a href="#story" class="nav-item nav-link">Story</a>
+            <a href="#gallery" class="nav-item nav-link">Gallery</a>
         </div>
-    </nav>
-    <!-- Navbar End -->
+        <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
+            <h1 class="font-secondary text-white mb-n2">Laura<span class="text-primary">&</span>Fernando</h1>
+        </a>
+        <div class="navbar-nav mr-auto py-0">
+            <a href="#family" class="nav-item nav-link">Family</a>
+            <a href="#event" class="nav-item nav-link">Event</a>
+            <a href="#rsvp" class="nav-item nav-link">RSVP</a>
+            <a href="#contact" class="nav-item nav-link">Contact</a>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
 
 
 <!-- Carousel Start -->
@@ -110,22 +111,22 @@
       <h2 class="countdown-title">Countdown to the Big Day</h2>
       <div id="countdown-timer" class="countdown-grid">
         <div class="countdown-box">
-          <h1 id="days">00</h1>
-          <p>Days</p>
-        </div>
-        <div class="countdown-box">
-          <h1 id="hours">00</h1>
-          <p>Hours</p>
-        </div>
-        <div class="countdown-box">
-          <h1 id="minutes">00</h1>
-          <p>Minutes</p>
-        </div>
-        <div class="countdown-box">
-          <h1 id="seconds">00</h1>
-          <p>Seconds</p>
-        </div>
-      </div>
+            <h1 id="days" class="timer-number">00</h1>
+            <p>Days</p>
+          </div>
+          <div class="countdown-box">
+            <h1 id="hours" class="timer-number">00</h1>
+            <p>Hours</p>
+          </div>
+          <div class="countdown-box">
+            <h1 id="minutes" class="timer-number">00</h1>
+            <p>Minutes</p>
+          </div>
+          <div class="countdown-box">
+            <h1 id="seconds" class="timer-number">00</h1>
+            <p>Seconds</p>
+          </div>
+          
       <div class="animation-container">
         <div class="rocket"></div>
         <div class="star"></div>
@@ -223,18 +224,20 @@
     <!-- Video Modal End -->
 
 
-    <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">About</h6>
-                <h1 class="font-secondary display-4">Bride & Groom</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-            <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
-                <div class="col-md-6 p-0 text-center text-md-right">
-                    <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
-                        <h3 class="mb-3">The Groom</h3>
+<!-- About Start -->
+<div class="container-fluid py-5" id="about">
+    <div class="container py-5">
+        <div class="section-title position-relative text-center">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">About</h6>
+            <h1 class="font-secondary display-4">Bride & Groom</h1>
+            <i class="far fa-heart text-dark"></i>
+        </div>
+        <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
+            <div class="col-md-6 p-0 text-center text-md-right position-relative">
+                <!-- Brazilian Flag -->
+                <img class="flag" src="img/brazil-flag.png" alt="Brazilian Flag">
+                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
+                    <h3 class="mb-3">The Groom</h3>
                         <p>
                             I’m Fernando, the lucky groom! Born and raised in the vibrant heart of Brazil, Belo Horizonte I’ve been shaped by a culture that celebrates 
                             life, love, and togetherness. Whether it’s dancing to my favorite music, exploring new places, or diving into my career
@@ -253,7 +256,6 @@
                             <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
                             <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-
                         </div>
                     </div>
                 </div>
@@ -265,11 +267,14 @@
                 <div class="col-md-6 p-0" style="min-height: 400px;">
                     <img class="position-absolute w-100 h-100" src="img/about-2.jpg" style="object-fit: cover;">
                 </div>
-                <div class="col-md-6 p-0 text-center text-md-left">
+                <div class="col-md-6 p-0 text-center text-md-left position-relative">
+                    <!-- Irish Flag -->
+                    <img class="flag" src="img/ireland-flag.png" alt="Irish Flag">
                     <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
                         <h3 class="mb-3">The Bride</h3>
-                        <p>Hello, dear friends and family!
-                            I’m Laura, the bride, a joy-loving soul who treasures the people around me. My passion for life is woven into everything I do. I try my best to make the people I love feel special, and to dance through each moment of life. I can’t wait to celebrate our day with each of you by our side, and to share the love that brought us all together!</p>
+                        <p>
+                            Hello, dear friends and family! I’m Laura, the bride, a joy-loving soul who treasures the people around me...
+                        </p>
                         <h3 class="font-secondary font-weight-normal text-muted mb-3"><i class="fa fa-female text-primary pr-3"></i>Laura Kinsella</h3>
                         <div class="position-relative">
                             <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -281,6 +286,7 @@
             </div>
         </div>
     </div>
+    <!-- About End -->
     <!-- About End -->
 
 
@@ -332,7 +338,7 @@
                 <div class="row">
                     <div class="col-md-6 text-center text-md-right">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 mr-md-3">
-                            <h4 class="mb-2">Enagagement</h4>
+                            <h4 class="mb-2">Engagement</h4>
                             <p class="text-uppercase mb-2">01 Jan 2050</p>
                             <p class="m-0">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.</p>
                         </div>
