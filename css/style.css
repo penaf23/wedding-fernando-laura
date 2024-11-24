@@ -69,6 +69,8 @@ body {
   .font-secondary {
     font-family: "Great Vibes", cursive;
   }
+
+  overflow-x: hidden; /* Hide horizontal scrollbar */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -1012,14 +1014,58 @@ mark,
 }
 
 .info-box {
-  margin-top: 15px;
-  padding: 15px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
-  border-radius: 8px;
-  font-size: 24px;
-  color: #ffffff;
-  line-height: 1.5;
-  animation: slideUp 1s ease-in-out;
+  background: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa); /* Gradiente suave */
+  color: #fff; /* Contraste do texto */
+  padding: 20px 30px; /* Espaçamento interno */
+  border-radius: 10px; /* Cantos arredondados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  text-align: center; /* Centraliza o texto */
+  font-family: "Baskervville", serif; /* Mantém a tipografia do projeto */
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 1.2s ease-in-out; /* Animação de entrada */
+}
+
+/* Adiciona uma borda animada */
+.info-box:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  transform: rotate(45deg);
+  animation: moveDiagonal 6s linear infinite;
+}
+
+/* Estilo do texto */
+.info-box p {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+/* Animações */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveDiagonal {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 @keyframes fadeIn {
@@ -2403,7 +2449,7 @@ pre code {
   .table-responsive-sm {
     display: block;
     width: 100%;
-    overflow-x: auto;
+overflow-x: hidden
     -webkit-overflow-scrolling: touch;
   }
   .table-responsive-sm > .table-bordered {
@@ -2415,7 +2461,7 @@ pre code {
   .table-responsive-md {
     display: block;
     width: 100%;
-    overflow-x: auto;
+overflow-x: hidden
     -webkit-overflow-scrolling: touch;
   }
   .table-responsive-md > .table-bordered {
@@ -2427,7 +2473,7 @@ pre code {
   .table-responsive-lg {
     display: block;
     width: 100%;
-    overflow-x: auto;
+overflow-x: hidden
     -webkit-overflow-scrolling: touch;
   }
   .table-responsive-lg > .table-bordered {
@@ -2439,7 +2485,7 @@ pre code {
   .table-responsive-xl {
     display: block;
     width: 100%;
-    overflow-x: auto;
+overflow-x: hidden
     -webkit-overflow-scrolling: touch;
   }
   .table-responsive-xl > .table-bordered {
@@ -6744,6 +6790,10 @@ a.close.disabled {
 
 .carousel {
   position: relative;
+  width: 100%; /* Garante que ocupa 100% da largura disponível */
+  max-width: 100%;
+  overflow: hidden; /* Remove qualquer conteúdo que escape */
+  margin: 0 auto;
 }
 
 .carousel.pointer-event {
@@ -7082,7 +7132,18 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #121f38 !important;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
+  color: #fff; /* Para garantir contraste de texto */
+  padding: 40px 0; /* Espaçamento vertical */
+  width: 100%; /* Ocupa toda a largura */
+  margin: 0; /* Remove margens extras */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Centraliza o conteúdo */
+  font-family: "Montserrat", sans-serif; /* Garantia de consistência */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2); /* Suave sombra para separação */
 }
 
 a.bg-dark:hover,
@@ -10659,29 +10720,37 @@ header nav a {
   height: 90vh;
   margin: 0 auto;
   overflow: hidden;
-  position: align center;
+  position: relative;
 }
-
+/* Ajusta a largura das imagens dentro do carrossel para ocupar toda a largura */
+.carousel .list {
+  display: flex; /* Garante que os itens fiquem em linha */
+  flex-wrap: nowrap; /* Os itens não devem quebrar a linha */
+  overflow: hidden; /* Impede o overflow */
+  width: 100vw; /* Garante que a largura ocupe a visualização */
+}
 .carousel .list .item {
   width: 180px;
   height: 250px;
   position: absolute;
+  flex: 0 0 auto; 
+  margin: 0 10px;
   top: 70%;
   transform: translateY(-50%, 70%);
   left: 50%;
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   background-position: 50% 50%;
   background-size: cover;
   z-index: 100;
   transition: 1s;
 }
 .container-fluid.bg-gallery {
-  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  padding: 60px 15px; /* Ajuste de espaçamento */
   margin: 0 auto; /* Centraliza o container */
-  padding: 100px 0;
-  overflow: hidden; /* Remove qualquer barra de rolagem extra */
-  max-width: 100%; /* Garante que o conteúdo não ultrapasse os limites */
+  overflow-x: hidden; /* Remove qualquer rolagem horizontal */
 }
 
 .carousel .list .item:nth-child(1),
@@ -10741,58 +10810,6 @@ header nav a {
   animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 
-.content .name {
-  font-size: 100px;
-  text-transform: uppercase;
-  font-weight: bold;
-  line-height: 1;
-  text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
-
-  opacity: 0;
-  animation: animate 1s ease-in-out 0.6s 1 forwards;
-}
-
-.content .des {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  margin-left: 5px;
-
-  opacity: 0;
-  animation: animate 1s ease-in-out 0.9s 1 forwards;
-}
-
-.content .btn {
-  margin-left: 5px;
-
-  opacity: 0;
-  animation: animate 1s ease-in-out 1.2s 1 forwards;
-}
-
-.content .btn button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border: 2px solid #fff;
-}
-
-.content .btn button:nth-child(1) {
-  margin-right: 15px;
-}
-
-.content .btn button:nth-child(2) {
-  background: transparent;
-  color: #14ff72cb;
-  border: 2px solid #fff;
-  transition: 0.3s;
-}
-
-.content .btn button:nth-child(2):hover {
-  background-color: #14ff72cb;
-  color: #fff;
-  border-color: #14ff72cb;
-}
 
 @keyframes animate {
   from {
