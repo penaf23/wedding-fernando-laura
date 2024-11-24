@@ -7,13 +7,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Caveat:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;500;700&family=Righteous&family=Roboto:wght@100;300;400;500;700&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -21,7 +22,7 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
+    
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -196,12 +197,26 @@
             video.msRequestFullscreen();
         }
 
-        // Exit fullscreen when the video ends
+        // Exit fullscreen and redirect when the video ends
         video.onended = function () {
+            // Exit fullscreen mode if active
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+
+            // Hide the video container
             videoContainer.style.display = 'none';
+
+            // Redirect to the homepage
+            window.location.href = '/';
         };
     }
 </script>
+
 
 
 
@@ -227,69 +242,84 @@
 <!-- About Start -->
 <div class="container-fluid py-5" id="about">
     <div class="container py-5">
-        <div class="section-title position-relative text-center">
+        <!-- Section Title -->
+        <div class="section-title position-relative text-center mb-5">
             <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">About</h6>
             <h1 class="font-secondary display-4">Bride & Groom</h1>
             <i class="far fa-heart text-dark"></i>
         </div>
-        <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
-            <div class="col-md-6 p-0 text-center text-md-right position-relative">
-                <!-- Brazilian Flag -->
-                <img class="flag" src="img/brazil-flag.png" alt="Brazilian Flag">
-                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
-                    <h3 class="mb-3">The Groom</h3>
-                        <p>
-                            I’m Fernando, the lucky groom! Born and raised in the vibrant heart of Brazil, Belo Horizonte I’ve been shaped by a culture that celebrates 
-                            life, love, and togetherness. Whether it’s dancing to my favorite music, exploring new places, or diving into my career
-                            as a developer, I’ve always tried to live with energy, creativity, and a sense of joy in every moment. When I’m not adncing, travelling or coding, 
-                            you’ll find me enjoying the simple things like good food, good music, and, most importantly, 
-                            the company of people I care about. Life has taught me that it’s the connections we make and the love 
-                            we share that matter most.
-                            As I prepare to walk down the aisle, I’m overwhelmed with gratitude—for the love of my incredible fiancée,
-                            for the memories we’ve shared, and for the future we’re building together. But I’m also deeply thankful for 
-                            all of you, our cherished family and friends. You’ve been an essential part of our story, and your love 
-                            and support mean the world to us. Let’s come together to celebrate this unforgettable day, filled with 
-                            laughter, joy, and so much love. I can’t wait to see you all there and make memories we’ll treasure forever!
-                        </p>
-                        <h3 class="font-secondary font-weight-normal text-muted mb-3"><i class="fa fa-male text-primary pr-3"></i>Fernando Pena</h3>
-                        <div class="position-relative">
-                            <a class="btn btn-outline-primary btn-square mr-1" href="https://www.facebook.com/fernandopena84/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/fernando_pena84/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-primary btn-square mr-1" href="https://www.linkedin.com/in/fernando-pena22/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-md-6 p-0" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="img/about-1.jpg" style="object-fit: cover;">
+        <!-- Bride Section -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0 position-relative">
+                <!-- Imagem da Noiva -->
+                <div class="position-relative overflow-hidden rounded shadow-lg">
+                    <img class="w-100 h-100" src="img/about-2.jpg" alt="Bride" style="object-fit: cover;">
                 </div>
             </div>
-            <div class="row m-0">
-                <div class="col-md-6 p-0" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="img/about-2.jpg" style="object-fit: cover;">
+            <div class="col-lg-6 position-relative">
+                <!-- Bandeira como marca d'água -->
+                <div class="flag-watermark position-absolute w-100 h-100">
+                    <img class="w-100 h-100" src="img/ireland-flag.png" alt="Irish Flag" style="object-fit: cover; opacity: 0.1;">
                 </div>
-                <div class="col-md-6 p-0 text-center text-md-left position-relative">
-                    <!-- Irish Flag -->
-                    <img class="flag" src="img/ireland-flag.png" alt="Irish Flag">
+                <!-- Texto -->
+                <div class="position-relative">
+                    <!-- Bandeira como marca d'água -->
+                    <img class="flag-watermark" src="img/ireland-flag.png" alt="Irish Flag">
                     <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
-                        <h3 class="mb-3">The Bride</h3>
-                        <p>
-                            Hello, dear friends and family!
-                            I’m Laura, the bride, a joy-loving soul who treasures the people around me. My passion for life is woven into everything I do. 
-                            I try my best to make the people I love feel special, and to dance through each moment of life. I can’t wait to celebrate our 
-                            day with each of you by our side, and to share the love that brought us all together!
-                        </p>
-                        <h3 class="font-secondary font-weight-normal text-muted mb-3"><i class="fa fa-female text-primary pr-3"></i>Laura Kinsella</h3>
-                        <div class="position-relative">
-                            <a class="btn btn-outline-primary btn-square mr-1" href="https://www.facebook.com/laura.kinsella.750" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/laura.kinsella/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-primary btn-square mr-1" href="https://www.linkedin.com/in/laura-kinsella-b156b2156/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                    <h3 class="mb-3 text-center text-lg-left">The Bride</h3>
+                    <p class="baskervville-regular-italic">
+                        Hello, my favourite people! I’m Laura, the bride, and my heart is overflowing with joy as I think about 
+                        celebrating this incredible chapter of my life with you. I’m so deeply in love with my fiancé, and 
+                        I feel beyond lucky to have found the person who makes my world brighter every single day. 
+                        I cherish the people I love. Having you by our side on such a meaningful day means more to me 
+                        than I can put into words, and more than you might realise. I can’t wait to laugh, dance, and 
+                        celebrate this beautiful journey of love with each of you—our nearest and dearest. Thank you for 
+                        being part of our story! I cannot thank you enough, and I am beyond grateful. I am so excited to 
+                        share more with you about the love that is bringing us all together, and to be able to do that in 
+                        such a special place. This is a dream come true, and will only ever happen once, so it’s time for an adventure!
+                    </p>
+                    <h4 class="font-secondary font-weight-normal text-muted mb-4 text-center text-lg-left">
+                        <i class="fa fa-female text-primary pr-2"></i>Laura Kinsella
+                    </h4>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/laura.kinsella.750" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="https://www.instagram.com/laura.kinsella/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square" href="https://www.linkedin.com/in/laura-kinsella-b156b2156/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+    <!-- Groom Section -->
+<div class="row align-items-center">
+    <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0 position-relative">
+        <div class="position-relative overflow-hidden rounded shadow-lg">
+            <img class="w-100 h-100" src="img/about-1.jpg" alt="Groom" style="object-fit: cover;">
+        </div>
     </div>
+    <div class="col-lg-6 order-lg-1 position-relative">
+        <!-- Brazilian Flag as Watermark -->
+        <img class="flag-watermark" src="img/brazil-flag.png" alt="Brazilian Flag">
+        <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
+            <h3 class="mb-3 text-center text-lg-left">The Groom</h3>
+            <p class="baskervville-regular-italic">
+                I’m Fernando, the lucky groom! Whether it’s dancing to my favorite music, exploring new places, or diving into my career
+                as a developer, I’ve always tried to live with energy, creativity, and a sense of joy in every moment. When I’m not
+                dancing, traveling, or coding, you’ll find me enjoying the simple things like good food, good music, and, most importantly,
+                the company of people I care about.
+            </p>
+            <h4 class="font-secondary font-weight-normal text-muted mb-4 text-center text-lg-left">
+                <i class="fa fa-male text-primary pr-2"></i>Fernando Pena
+            </h4>
+            <div class="d-flex justify-content-center justify-content-lg-start">
+                <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/fernandopena84/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="https://www.instagram.com/fernando_pena84/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-primary btn-square" href="https://www.linkedin.com/in/fernando-pena22/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
     <!-- About End -->
     
 
@@ -310,7 +340,7 @@
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 ml-md-3">
                             <h4 class="mb-2">First Meet</h4>
                             <p class="text-uppercase mb-2">06 Jun 2021</p>
-                            <p class="m-0">Their story began on a magical evening in Dublin, at Grand Canal Dock. Two souls, from worlds apart, found each other. She, Irish, and he, Brazilian, discovered that their worlds weren’t as distant as they once believed. He asked her to dance, and although she was shy at first, his persistence paid off, and she finally said yes. That night, they danced for three hours straight—and, in a way, they’ve been dancing ever since.
+                            <p class="baskervville-regular-italic">Their story began on a magical evening in Dublin, at Grand Canal Dock. Two souls, from worlds apart, found each other. She, Irish, and he, Brazilian, discovered that their worlds weren’t as distant as they once believed. He asked her to dance, and although she was shy at first, his persistence paid off, and she finally said yes. That night, they danced for three hours straight—and, in a way, they’ve been dancing ever since.
 
                                 As their journey unfolded, their lives and cultures blended beautifully. From the warmth of Brazilian family gatherings to the charm of Irish traditions, they’ve shared laughter, adventures, and countless dreams. In 2024, in Dublin, he asked her the most important question of all: to be his forever.
                                 
@@ -322,12 +352,16 @@
                     <div class="col-md-6 text-center text-md-right">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 mr-md-3">
                             <h4 class="mb-2">First Date</h4>
-                            <p class="text-uppercase mb-2">01 Jan 2021</p>
-                            <p class="m-0">Our first date began at the charming restaurant Bah33 in Dublin, a night that would forever be etched in our hearts. It was the first time Laura tried Brazilian cuisine, a delightful introduction to a part of my culture and she absolutely loved it. We spent the evening talking, laughing, and discovering how much we had in common.
-
-                                Since that special night, dining out has become a cornerstone of our relationship. From small, hidden gems to Michelin-starred spots, we’ve shared countless meals and made unforgettable memories together. Our shared love for food has taken us on culinary adventures not just around Dublin but across the globe, where we’ve explored diverse flavors, traditions, and stories behind every dish.
-                                
-                                For us, food is more than just sustenance, it’s an experience that brings us closer. Every meal we share is a celebration of love, laughter, and life together.</p>
+                            <p class="text-uppercase mb-2">30 Jul 2021</p>
+                            <p class="baskervville-regular-italic">Our first date began at the charming restaurant Bah33 in Dublin, a night that would forever be 
+                                etched in our hearts. It was the first time Laura tried Brazilian cuisine, a delightful introduction to a part of my culture and 
+                                she absolutely loved it. We spent the evening talking, laughing, and discovering how much we had in common.
+                                Since that special night, dining out has become a cornerstone of our relationship. From small, hidden gems 
+                                to Michelin-starred spots, we’ve shared countless meals and made unforgettable memories together. 
+                                Our shared love for food has taken us on culinary adventures not just around Dublin but across the globe, 
+                                where we’ve explored diverse flavors, traditions, and stories behind every dish.
+                                For us, food is more than just sustenance, it’s an experience that brings us closer. Every meal we share 
+                                is a celebration of love, laughter, and life together.</p>
                         </div>
                     </div>
                     <div class="col-md-6 text-center text-md-left">
@@ -342,11 +376,11 @@
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 ml-md-3">
                             <h4 class="mb-2">Proposal</h4>
                             <p class="text-uppercase mb-2">26 Oct 2024</p>
-                            <p class="m-0">On October 26, 2024, I asked Laura the most important question of my life: to spend the rest of her life by my side.
-                                           It was a rainy night in Dublin, but the weather couldn’t dampen the magic of the moment. I chose the Grand Canal, 
-                                           the very place where our paths first crossed, as the perfect setting for this life changing moment.
-                                            It was an intimate and heartfelt evening, made even more special by Laura’s beautiful "yes," which filled me with 
-                                            indescribable happiness. </p>
+                            <p class="baskervville-regular-italic">On October 26, 2024, I asked Laura the most important question of my life: to spend the rest of her life by my side.
+                            It was a rainy night in Dublin, but the weather couldn’t dampen the magic of the moment. I chose the Grand Canal, 
+                            the very place where our paths first crossed, as the perfect setting for this life changing moment.
+                            It was an intimate and heartfelt evening, made even more special by Laura’s beautiful "yes," which filled me with 
+                            indescribable happiness. </p>
                         </div>
                     </div>
                 </div>
@@ -355,7 +389,7 @@
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 mr-md-3">
                             <h4 class="mb-2">Engagement</h4>
                             <p class="text-uppercase mb-2">26 Oct 2024</p>
-                            <p class="m-0">After the proposal, we celebrated this unforgettable milestone with a wonderful dinner, 
+                            <p class="baskervville-regular-italic">After the proposal, we celebrated this unforgettable milestone with a wonderful dinner, 
                                 cherishing every moment of what would become one of the most memorable nights of our lives.
                                 The rain, the location and the love we wouldn’t have changed a single thing.</p>
                         </div>
@@ -370,53 +404,133 @@
     <!-- Story End -->
 
 
-    <!-- Gallery Start -->
-    <div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
-        <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Gallery</h6>
-            <h1 class="font-secondary display-4 text-white">Our Photo Gallery</h1>
-            <i class="far fa-heart text-white"></i>
-        </div>
-        <div class="owl-carousel gallery-carousel">
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
-                <a href="img/gallery-1.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
-                <a href="img/gallery-2.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
-                <a href="img/gallery-3.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
-                <a href="img/gallery-4.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
-                <a href="img/gallery-5.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
-                <a href="img/gallery-6.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-        </div>
+<!-- Gallery Start -->
+
+<div class="container-fluid bg-gallery" id="gallery">
+    <div class="section-title position-relative text-center">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Gallery</h6>
+        <h1 class="font-secondary display-4 text-white">Our Photo Gallery</h1>
+        <i class="far fa-heart text-white"></i>
     </div>
-    <!-- Gallery End -->
+    <div class="carousel">
+        <div class="list">
+            <div class="item" style="background-image: url(img/gallery-1.jpg);">
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url(img/gallery-2.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/gallery-3.jpg);">
+
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/gallery-4.jpg);">
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/gallery-5.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/gallery-6.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/story-1.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/story-2.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/story-3.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/story-4.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(img/gallery.jpg);">
+                
+                <div class="content">
+                    <div class="title"></div>
+                    <div class="name"></div>
+                    <div class="des"></div>
+                </div>
+            </div>
+        </div>
+        <!--next prev button-->
+        <div class="arrows">
+            <button class="prev"><</button>
+            <button class="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="timeRunning"></div>
+    </div>
+
+
+<!-- Gallery End -->
 
 
     <!-- Event Start -->
@@ -424,37 +538,109 @@
         <div class="container py-5">
             <div class="section-title position-relative text-center">
                 <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event</h6>
-                <h1 class="font-secondary display-4">Our Wedding Event</h1>
+                <h1 class="font-secondary display-4">Our Wedding Day</h1>
+                <h2 class="font-secondary display-4">01 August 2025</h2>
                 <i class="far fa-heart text-dark"></i>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-10 text-align-center">
-                    <h5 class="font-weight-normal text-muted mb-3 pb-3">We’re thrilled to invite you to join us in beautiful Belo Horizonte, Brazil!
-                        Our wedding will be a celebration filled with love, adventure, and a blend of cultures, in the gorgeous Minas Gerais where Fernando grew up. We envision a magical evening where traditions unite, and elegance meets the vibrant, lush beauty of nature. For those traveling, we’ll provide all the information you’ll need to make your trip seamless and enjoyable. So, pack your dancing shoes, bring your joy, and prepare to celebrate love in the most beautiful way possible!</h5>
+                    <h5 class="baskervville-regular-italic">We’re thrilled to invite you to join us in beautiful Belo Horizonte, Brazil!
+                        Our wedding will be a celebration filled with love, adventure, and a blend of cultures, in the gorgeous Minas Gerais where 
+                        Fernando grew up. We envision a magical evening where traditions unite, and elegance meets the vibrant, lush beauty 
+                        of nature. For those traveling, we can provide all the information you’ll need to make your trip seamless and enjoyable. 
+                        So, pack your dancing shoes, bring your joy, and prepare to celebrate love in the most beautiful way possible!</h5>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 border-right border-primary">
-                    <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                        <img class="img-fluid mb-4" src="img/event-1.jpg" alt="">
-                        <h4 class="mb-3">The Reception</h4>
-                        <p class="mb-2">Espaco Sanctuarium, Rua: do Colibri, 142 - Cidade Verde, Betim - MG, 32649-144, Brasil</p>
-                        <p class="mb-0">15:00PM - 16:30PM</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4" src="img/event-2.jpg" alt="">
-                        <h4 class="mb-3">Wedding Party</h4>
-                        <p class="mb-2">Espaco Sanctuarium, Rua: do Colibri, 142 - Cidade Verde, Betim - MG, 32649-144, Brasil</p>
-                        <p class="mb-0">16:30PM - 22:00PM</p>
+                <div class="col-md-12">
+                    <div class="venue-container text-center">
+                        <img class="venue-image img-fluid mb-4" src="img/event-2.jpg" alt="Venue Location">
+                        <h4 class="venue-title mb-3">Venue Location</h4>
+                        <p class="venue-description mb-2">
+                            Espaco Sanctuarium, Rua: do Colibri, 142 - Cidade Verde, Betim - MG, 32649-144, Brasil
+                        </p>
+                        <p class="venue-time mb-0">Time: 15:00</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Event End -->
+            
 
+
+            <div class="container py-5">
+                <!-- Section Title -->
+                <div class="section-title position-relative text-center">
+                    <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;"></h6>
+                    <h1 class="font-secondary display-4">Travel & Accommodations</h1>
+                    <i class="far fa-heart text-dark"></i>
+                </div>
+            
+                <!-- Introduction -->
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-10 text-center">
+                        <h5 class="baskervville-regular-italic">
+                            We know that many of you are traveling a long way to celebrate with us, and we couldn’t be more grateful! To make planning easier, here are some recommendations for flights, timing, and accommodations.
+                        </h5>
+                    </div>
+                </div>
+            
+                <!-- Main Content -->
+                    <div class="row g-4">
+                        <!-- Flights & Hotels Section -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-lg h-100 rounded hover-scale">
+                                <div class="overflow-hidden rounded-top">
+                                    <img class="card-img-top same-height" src="img/event-3.jpg" alt="Book Flights">
+                                </div>
+                                <div class="card-body position-relative">
+                                    <!-- Highlighted Section for Flights -->
+                                    <h4 class="card-title text-primary highlight-header">When to Book Flights?</h4>
+                                    <p class="baskervville-regular-italic">
+                                        We suggest booking flights to Belo Horizonte as early as possible to get the best rates and availability. Aim to fly into Belo Horizonte International Airport (Confins) for the most convenient access.
+                                    </p>
+                                    <hr>
+                                    
+                                    <!-- Highlighted Section for Accommodations -->
+                                    <h4 class="card-title text-primary highlight-header">Accommodations</h4>
+                                    <p class="baskervville-regular-italic">
+                                        <strong>Hotels:</strong> We can recommend options to suit everyone’s preferences. Popular neighborhoods include Savassi, Lourdes, Funcionários, Pampulha, Mangabeiras, and Floresta. If multiple guests are staying at the same hotel, we’d be happy to inquire about group discounts. Examples include Royal Golden Hotel Savassi or Holiday Inn Savassi.
+                                    </p>
+                                    <p class="baskervville-regular-italic">
+                                        <strong>Airbnbs:</strong> For a more private or group-friendly stay, there are excellent Airbnb options in the city center and near the venue, offering flexibility and comfort for all needs.
+                                    </p>
+                                    <p class="baskervville-regular-italic"">Please reach out if you’d like help finding a spot that’s perfect for you!</p>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Video Section -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-lg h-100 rounded hover-scale">
+                                <div class="overflow-hidden rounded-top">
+                                    <video class="card-img-top same-height" autoplay loop muted>
+                                        <source src="img/bh.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="card-body position-relative p-4">
+                                    <div class="highlight-header mb-3">
+                                    <h4 class="card-title text-primary fw-bold">Belo Horizonte - Brazil</h4>
+                                    </div>
+                                    <p class="baskervville-regular-italic">
+                                        Belo Horizonte, the charming capital of Minas Gerais, Brazil, is a city that seamlessly blends tradition, 
+                                        culture, and modernity. Known affectionately as "BH," it's a place where the warmth of its people shines 
+                                        as brightly as its sunny skies. 
+                                        <p class="baskervville-regular-italic"">From the iconic Pampulha Architectural Complex, designed by Oscar Niemeyer, 
+                                        to the lively Mercado Central, filled with delicious local delicacies, Belo Horizonte offers a rich tapestry 
+                                        of experiences.</p>
+                                        <p class="baskervville-regular-italic"">The city's rolling hills and surrounding mountains provide breathtaking views, 
+                                        while its vibrant food scene, especially the famous pão de queijo and feijão tropeiro, showcases the culinary heart 
+                                        of Minas Gerais. Whether you're exploring its bustling squares, enjoying the energy of its nightlife, or venturing 
+                                        out to nearby gems like Inhotim or Ouro Preto, BH is a city that invites you to fall in love with its rhythm and charm.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     
 <!-- Friends & Family Start -->
 <div class="container-fluid py-5" id="family">
@@ -629,9 +815,17 @@
     </div>
     <!-- RSVP End -->
 
+        <div class="info-box">
+            <p class="baskervville-regular-italic">Come back to our site soon for details and updates on other options to see, do, eat, and more ways that we plan to celebrate 
+                as part of our big adventure with you! In the meantime, if you need any further details to plan your trip, please contact us!</p>
+        </div>
+    </div>
+
+    
+
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 60px;"> 
+    <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin: -10px;"> 
         <div class="container text-center py-5">
             <div class="section-title position-relative text-center">
                 <h1 class="font-secondary display-3 text-white">Thank You</h1>
@@ -654,7 +848,7 @@
     </div>
     <!-- Footer End -->
 
-
+    
     <!-- Scroll to Bottom -->
     <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
 
@@ -672,7 +866,71 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script>
+        
+var nextBtn = document.querySelector('.next'),
+    prevBtn = document.querySelector('.prev'),
+    carousel = document.querySelector('.carousel'),
+    list = document.querySelector('.list'), 
+    item = document.querySelectorAll('.item'),
+    runningTime = document.querySelector('.carousel .timeRunning') 
+
+let timeRunning = 3000 
+let timeAutoNext = 7000
+
+nextBtn.onclick = function(){
+    showSlider('next')
+}
+
+prevBtn.onclick = function(){
+    showSlider('prev')
+}
+
+let runTimeOut 
+
+let runNextAuto = setTimeout(() => {
+    nextBtn.click()
+}, timeAutoNext)
+
+
+function resetTimeAnimation() {
+    runningTime.style.animation = 'none'
+    runningTime.offsetHeight /* trigger reflow */
+    runningTime.style.animation = null 
+    runningTime.style.animation = 'runningTime 7s linear 1 forwards'
+}
+
+
+function showSlider(type) {
+    let sliderItemsDom = list.querySelectorAll('.carousel .list .item')
+    if(type === 'next'){
+        list.appendChild(sliderItemsDom[0])
+        carousel.classList.add('next')
+    } else{
+        list.prepend(sliderItemsDom[sliderItemsDom.length - 1])
+        carousel.classList.add('prev')
+    }
+
+    clearTimeout(runTimeOut)
+
+    runTimeOut = setTimeout( () => {
+        carousel.classList.remove('next')
+        carousel.classList.remove('prev')
+    }, timeRunning)
+
+
+    clearTimeout(runNextAuto)
+    runNextAuto = setTimeout(() => {
+        nextBtn.click()
+    }, timeAutoNext)
+
+    resetTimeAnimation() // Reset the running time animation
+}
+
+// Start the initial animation 
+resetTimeAnimation()
+
+    </script>
 </body>
 
 </html>
