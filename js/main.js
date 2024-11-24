@@ -2,14 +2,16 @@
     "use strict";
 
     // Navbar on scrolling
+    // Definir a navbar como visível inicialmente
+    $('.navbar').css('display', 'flex');
+    
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {
-            $('.navbar').fadeIn('slow').css('display', 'flex');
+            $('.navbar').addClass('navbar-scrolled');
         } else {
-            $('.navbar').fadeOut('slow').css('display', 'none');
+            $('.navbar').removeClass('navbar-scrolled');
         }
     });
-
 
     // Smooth scrolling on the navbar links
     $(".navbar-nav a").on('click', function (event) {
@@ -82,6 +84,49 @@
         return false;
     });
 
+    let runTimeOut 
+
+    let runNextAuto = setTimeout(() => {
+        nextBtn.click()
+    }, timeAutoNext)
+    
+    
+    function resetTimeAnimation() {
+        runningTime.style.animation = 'none'
+        runningTime.offsetHeight /* trigger reflow */
+        runningTime.style.animation = null 
+        runningTime.style.animation = 'runningTime 7s linear 1 forwards'
+    }
+    
+    
+    function showSlider(type) {
+        let sliderItemsDom = list.querySelectorAll('.carousel .list .item')
+        if(type === 'next'){
+            list.appendChild(sliderItemsDom[0])
+            carousel.classList.add('next')
+        } else{
+            list.prepend(sliderItemsDom[sliderItemsDom.length - 1])
+            carousel.classList.add('prev')
+        }
+    
+        clearTimeout(runTimeOut)
+    
+        runTimeOut = setTimeout( () => {
+            carousel.classList.remove('next')
+            carousel.classList.remove('prev')
+        }, timeRunning)
+    
+    
+        clearTimeout(runNextAuto)
+        runNextAuto = setTimeout(() => {
+            nextBtn.click()
+        }, timeAutoNext)
+    
+        resetTimeAnimation() // Reset the running time animation
+    }
+    
+    // Start the initial animation 
+    resetTimeAnimation()
 
     // Gallery carousel
     $(".gallery-carousel").owlCarousel({
